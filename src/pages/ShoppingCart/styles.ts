@@ -65,6 +65,27 @@ export const PaymentContainer = styled.div`
   border-radius: 6px;
   padding: 2.5rem;
   margin-top: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+export const PaymentOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+`
+export const PaymentErrorMessage = styled.p`
+  ${mixins.fonts.textXS};
+  font-weight: 400;
+  color: red;
 `
 export const OrderContainer = styled.div`
   background-color: ${({ theme }) => theme.colors['base-card']};

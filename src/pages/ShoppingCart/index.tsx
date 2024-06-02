@@ -1,5 +1,6 @@
 import { TextInput } from '../../components/Form/TextInput'
-import { CurrencyDollar, MapPin } from 'phosphor-react'
+import { Radio } from '../../components/Form/Radio'
+import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 import {
   Container,
   InfoContainer,
@@ -9,6 +10,8 @@ import {
   OrderContainer,
   PaymentHeading,
   AddressForm,
+  PaymentOptions,
+  PaymentErrorMessage,
 } from './styles'
 
 export function ShoppingCart() {
@@ -76,6 +79,26 @@ export function ShoppingCart() {
                 </p>
               </div>
             </PaymentHeading>
+            <PaymentOptions>
+              <div>
+                <Radio value="credit" isSelected={false}>
+                  <CreditCard size={16} />
+                  <span>Cartão de crédito</span>
+                </Radio>
+
+                <Radio value="debit" isSelected={true}>
+                  <Bank size={16} />
+                  <span>Cartão de débito</span>
+                </Radio>
+
+                <Radio value="cash" isSelected={false}>
+                  <Money size={16} />
+                  <span>Dinheiro</span>
+                </Radio>
+              </div>
+
+              <PaymentErrorMessage role="alert">teste</PaymentErrorMessage>
+            </PaymentOptions>
           </PaymentContainer>
         </InfoContainer>
         <InfoContainer>
