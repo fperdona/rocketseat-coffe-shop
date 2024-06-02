@@ -19,11 +19,16 @@ export const CoffeeImg = styled.img`
 
 export const Tags = styled.div`
   ${mixins.fonts.tag}
-  color: ${({ theme }) => theme.colors['yellow-dark']};
-  background-color: ${({ theme }) => theme.colors['yellow-light']};
-  padding: 4px 8px;
-  border-radius: 8px;
-  text-transform: uppercase;
+  display: flex;
+  gap: 0.5rem;
+  > span {
+    background-color: ${({ theme }) => theme.colors['yellow-light']};
+    color: ${({ theme }) => theme.colors['yellow-dark']};
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    gap: 1rem;
+  }
 `
 export const Title = styled.div`
   ${mixins.fonts.titleS}
@@ -55,7 +60,7 @@ export const Price = styled.div`
     ${mixins.fonts.titleM};
   }
 `
-export const Order = styled.div`
+export const Order = styled.div<{ $itemAdded?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -63,10 +68,13 @@ export const Order = styled.div`
     display: flex;
     border-radius: 6px;
     padding: 0.5rem;
-    background-color: ${({ theme }) => theme.colors['purple-dark']};
-  }
-  > button:hover {
-    background-color: ${({ theme }) => theme.colors['purple-light']};
+    background-color: ${({ theme, $itemAdded }) =>
+      $itemAdded ? theme.colors['yellow-dark'] : theme.colors['purple-dark']};
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: ${({ theme, $itemAdded }) =>
+        $itemAdded ? theme.colors.yellow : theme.colors.purple};
+    }
   }
 `
 export const QuantityInput = styled.div`

@@ -65,6 +65,14 @@ export const CoffeeList = styled.div`
   display: flex;
   flex-direction: column;
   /* gap: 3rem; */
+  > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    > div {
+      margin-bottom: 2rem;
+    }
+  }
 
   > h2 {
     ${mixins.fonts.titleL}
