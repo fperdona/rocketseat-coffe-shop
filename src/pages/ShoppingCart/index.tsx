@@ -1,13 +1,27 @@
+import { Fragment } from 'react'
 import { TextInput } from '../../components/Form/TextInput'
 import { Radio } from '../../components/Form/Radio'
-import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import { coffees } from '../../../data.json'
+import { QuantityInput } from '../../components/Form/QuantityInput'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  Money,
+  Trash,
+} from 'phosphor-react'
 import {
   Container,
   InfoContainer,
   AddressContainer,
   AddressHeading,
   PaymentContainer,
-  OrderContainer,
+  CartTotal,
+  CartTotalInfo,
+  Coffee,
+  CoffeeInfo,
+  CheckoutButton,
   PaymentHeading,
   AddressForm,
   PaymentOptions,
@@ -103,7 +117,54 @@ export function ShoppingCart() {
         </InfoContainer>
         <InfoContainer>
           <h2>Cafés selecionados</h2>
-          <OrderContainer></OrderContainer>
+          <CartTotal>
+            {coffees.map((coffee) => (
+              <Fragment key={coffee.id}>
+                <Coffee>
+                  <div>
+                    <img src={coffee.image} alt={coffee.title} />
+
+                    <div>
+                      <span>{coffee.title}</span>
+
+                      <CoffeeInfo>
+                        <QuantityInput quantity={1} />
+                        <button>
+                          <Trash />
+                          <span>Remover</span>
+                        </button>
+                      </CoffeeInfo>
+                    </div>
+                  </div>
+
+                  <aside>R$ {coffee.price?.toFixed(2)}</aside>
+                </Coffee>
+
+                <span />
+              </Fragment>
+            ))}
+
+            <CartTotalInfo>
+              <div>
+                <span>Total de itens</span>
+                <span>R$ 39,60</span>
+              </div>
+
+              <div>
+                <span>Entrega</span>
+                <span>R$ 3,50</span>
+              </div>
+
+              <div>
+                <span>Total</span>
+                <span>Total R$ 43,10</span>
+              </div>
+            </CartTotalInfo>
+
+            <CheckoutButton type="submit" form="order">
+              Confirmar pedido
+            </CheckoutButton>
+          </CartTotal>
         </InfoContainer>
       </Container>
     </div>
